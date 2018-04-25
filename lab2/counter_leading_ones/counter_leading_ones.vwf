@@ -20,6 +20,7 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
@@ -38,6 +39,7 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
 </modelsim_script_timing>
 <hdl_lang>vhdl</hdl_lang>
 </simulation_settings>*/
@@ -68,7 +70,7 @@ HEADER
 	VERSION = 1;
 	TIME_UNIT = ns;
 	DATA_OFFSET = 0.0;
-	DATA_DURATION = 1000.0;
+	DATA_DURATION = 540.0;
 	SIMULATION_TIME = 0.0;
 	GRID_PHASE = 0.0;
 	GRID_PERIOD = 60.0;
@@ -226,7 +228,6 @@ TRANSITION_LIST("x[7]")
 		LEVEL 1 FOR 60.0;
 		LEVEL 0 FOR 60.0;
 		LEVEL 1 FOR 120.0;
-		LEVEL 0 FOR 460.0;
 	}
 }
 
@@ -241,7 +242,6 @@ TRANSITION_LIST("x[6]")
 		LEVEL 1 FOR 60.0;
 		LEVEL 0 FOR 60.0;
 		LEVEL 1 FOR 180.0;
-		LEVEL 0 FOR 460.0;
 	}
 }
 
@@ -254,7 +254,6 @@ TRANSITION_LIST("x[5]")
 		LEVEL 1 FOR 120.0;
 		LEVEL 0 FOR 60.0;
 		LEVEL 1 FOR 120.0;
-		LEVEL 0 FOR 460.0;
 	}
 }
 
@@ -267,7 +266,6 @@ TRANSITION_LIST("x[4]")
 		LEVEL 1 FOR 120.0;
 		LEVEL 0 FOR 60.0;
 		LEVEL 1 FOR 180.0;
-		LEVEL 0 FOR 460.0;
 	}
 }
 
@@ -280,7 +278,7 @@ TRANSITION_LIST("x[3]")
 		LEVEL 1 FOR 240.0;
 		LEVEL 0 FOR 60.0;
 		LEVEL 1 FOR 60.0;
-		LEVEL 0 FOR 520.0;
+		LEVEL 0 FOR 60.0;
 	}
 }
 
@@ -293,7 +291,7 @@ TRANSITION_LIST("x[2]")
 		LEVEL 1 FOR 120.0;
 		LEVEL 0 FOR 120.0;
 		LEVEL 1 FOR 120.0;
-		LEVEL 0 FOR 520.0;
+		LEVEL 0 FOR 60.0;
 	}
 }
 
@@ -306,7 +304,7 @@ TRANSITION_LIST("x[1]")
 		LEVEL 1 FOR 240.0;
 		LEVEL 0 FOR 60.0;
 		LEVEL 1 FOR 60.0;
-		LEVEL 0 FOR 520.0;
+		LEVEL 0 FOR 60.0;
 	}
 }
 
@@ -319,7 +317,7 @@ TRANSITION_LIST("x[0]")
 		LEVEL 1 FOR 60.0;
 		LEVEL 0 FOR 120.0;
 		LEVEL 1 FOR 120.0;
-		LEVEL 0 FOR 520.0;
+		LEVEL 0 FOR 60.0;
 	}
 }
 
@@ -328,7 +326,7 @@ TRANSITION_LIST("y[3]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL X FOR 1000.0;
+		LEVEL X FOR 540.0;
 	}
 }
 
@@ -337,7 +335,7 @@ TRANSITION_LIST("y[2]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL X FOR 1000.0;
+		LEVEL X FOR 540.0;
 	}
 }
 
@@ -346,7 +344,7 @@ TRANSITION_LIST("y[1]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL X FOR 1000.0;
+		LEVEL X FOR 540.0;
 	}
 }
 
@@ -355,7 +353,7 @@ TRANSITION_LIST("y[0]")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL X FOR 1000.0;
+		LEVEL X FOR 540.0;
 	}
 }
 
