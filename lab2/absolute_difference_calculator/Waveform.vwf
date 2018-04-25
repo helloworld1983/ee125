@@ -5,8 +5,8 @@
 <tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tyler/Documents/ee125/lab2/absolute_difference_calculator/simulation/qsim/" absolute_difference_calculator -c absolute_difference_calculator</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
-vcom -work work absolute_difference_calculator.vho
-vcom -work work Waveform.vwf.vht
+vcom -2008 -work work absolute_difference_calculator.vho
+vcom -2008 -work work Waveform.vwf.vht
 vsim -novopt -c -t 1ps -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.absolute_difference_calculator_vhd_vec_tst
 vcd file -direction absolute_difference_calculator.msim.vcd
 vcd add -internal absolute_difference_calculator_vhd_vec_tst/*
