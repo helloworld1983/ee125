@@ -63,16 +63,16 @@ set_global_assignment -name NUM_PARALLEL_PROCESSORS 4
 set_global_assignment -name VHDL_FILE multiple_detector.vhd -hdl_version VHDL_2008
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
 set_global_assignment -name BOARD "DE0-CV Development Board"
-set_location_assignment PIN_U13 -to a[4]
-set_location_assignment PIN_V13 -to a[3]
-set_location_assignment PIN_T13 -to a[2]
-set_location_assignment PIN_T12 -to a[1]
-set_location_assignment PIN_AA15 -to a[0]
-set_location_assignment PIN_AB15 -to b[4]
-set_location_assignment PIN_AA14 -to b[3]
-set_location_assignment PIN_AA13 -to b[2]
-set_location_assignment PIN_AB13 -to b[1]
-set_location_assignment PIN_AB12 -to b[0]
+set_location_assignment PIN_AB12 -to a[4]
+set_location_assignment PIN_AB13 -to a[3]
+set_location_assignment PIN_AA13 -to a[2]
+set_location_assignment PIN_AA14 -to a[1]
+set_location_assignment PIN_AB15 -to a[0]
+set_location_assignment PIN_AA15 -to b[4]
+set_location_assignment PIN_T12 -to b[3]
+set_location_assignment PIN_T13 -to b[2]
+set_location_assignment PIN_V13 -to b[1]
+set_location_assignment PIN_U13 -to b[0]
 set_location_assignment PIN_AA2 -to invalid_inp
 set_location_assignment PIN_AA1 -to is_multiple
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

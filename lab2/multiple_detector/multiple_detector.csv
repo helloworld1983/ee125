@@ -14,20 +14,20 @@
 
 # Quartus Prime Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
 # File: C:\Users\tyler\Documents\ee125\lab2\multiple_detector\multiple_detector.csv
-# Generated on: Tue Apr 24 19:14:13 2018
+# Generated on: Tue Apr 24 19:38:10 2018
 
 # Note: The column header names should not be changed if you wish to import this .csv file into the Quartus Prime software.
 
 To,Direction,Location,I/O Bank,VREF Group,Fitter Location,I/O Standard,Reserved,Current Strength,Slew Rate,Differential Pair,Transceiver Analog Settings Protocol,VCCR_GXB/VCCT_GXB Voltage,Transceiver I/O Pin Termination,Transceiver Dedicated Refclk Pin Termination,Transmitter Common Mode Driver Voltage,Transmitter Slew Rate Control,Transmitter Differential Output Voltage,Receiver Buffer Common Mode Voltage,Strict Preservation
-a[4],Input,PIN_U13,4A,B4A_N0,PIN_D3,,,,,,,,,,,,,,
-a[3],Input,PIN_V13,4A,B4A_N0,PIN_E2,,,,,,,,,,,,,,
-a[2],Input,PIN_T13,4A,B4A_N0,PIN_G2,,,,,,,,,,,,,,
-a[1],Input,PIN_T12,4A,B4A_N0,PIN_U2,,,,,,,,,,,,,,
-a[0],Input,PIN_AA15,4A,B4A_N0,PIN_N1,,,,,,,,,,,,,,
-b[4],Input,PIN_AB15,4A,B4A_N0,PIN_C1,,,,,,,,,,,,,,
-b[3],Input,PIN_AA14,4A,B4A_N0,PIN_U1,,,,,,,,,,,,,,
-b[2],Input,PIN_AA13,4A,B4A_N0,PIN_C2,,,,,,,,,,,,,,
-b[1],Input,PIN_AB13,4A,B4A_N0,PIN_L2,,,,,,,,,,,,,,
-b[0],Input,PIN_AB12,4A,B4A_N0,PIN_L1,,,,,,,,,,,,,,
-invalid_inp,Output,PIN_AA2,2A,B2A_N0,PIN_G1,,,,,,,,,,,,,,
-is_multiple,Output,PIN_AA1,2A,B2A_N0,PIN_AA1,,,,,,,,,,,,,,
+a[4],Input,PIN_AB12,4A,B4A_N0,PIN_U13,2.5 V,,,,,,,,,,,,,
+a[3],Input,PIN_AB13,4A,B4A_N0,PIN_V13,2.5 V,,,,,,,,,,,,,
+a[2],Input,PIN_AA13,4A,B4A_N0,PIN_T13,2.5 V,,,,,,,,,,,,,
+a[1],Input,PIN_AA14,4A,B4A_N0,PIN_T12,2.5 V,,,,,,,,,,,,,
+a[0],Input,PIN_AB15,4A,B4A_N0,PIN_AA15,2.5 V,,,,,,,,,,,,,
+b[4],Input,PIN_AA15,4A,B4A_N0,PIN_AB15,2.5 V,,,,,,,,,,,,,
+b[3],Input,PIN_T12,4A,B4A_N0,PIN_AA14,2.5 V,,,,,,,,,,,,,
+b[2],Input,PIN_T13,4A,B4A_N0,PIN_AA13,2.5 V,,,,,,,,,,,,,
+b[1],Input,PIN_V13,4A,B4A_N0,PIN_AB13,2.5 V,,,,,,,,,,,,,
+b[0],Input,PIN_U13,4A,B4A_N0,PIN_AB12,2.5 V,,,,,,,,,,,,,
+invalid_inp,Output,PIN_AA2,2A,B2A_N0,PIN_AA2,2.5 V,,,,,,,,,,,,,
+is_multiple,Output,PIN_AA1,2A,B2A_N0,PIN_AA1,2.5 V,,,,,,,,,,,,,
