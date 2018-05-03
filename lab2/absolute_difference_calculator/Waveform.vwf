@@ -20,6 +20,7 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
@@ -38,6 +39,7 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
 </modelsim_script_timing>
 <hdl_lang>vhdl</hdl_lang>
 </simulation_settings>*/
@@ -2369,7 +2371,7 @@ DISPLAY_LINE
 {
 	CHANNEL = "abs_diff";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
+	RADIX = Unsigned;
 	TREE_INDEX = 72;
 	TREE_LEVEL = 0;
 	CHILDREN = 73, 74, 75, 76, 77, 78, 79, 80;
@@ -2379,7 +2381,7 @@ DISPLAY_LINE
 {
 	CHANNEL = "abs_diff[7]";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
+	RADIX = Unsigned;
 	TREE_INDEX = 73;
 	TREE_LEVEL = 1;
 	PARENT = 72;
@@ -2389,7 +2391,7 @@ DISPLAY_LINE
 {
 	CHANNEL = "abs_diff[6]";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
+	RADIX = Unsigned;
 	TREE_INDEX = 74;
 	TREE_LEVEL = 1;
 	PARENT = 72;
@@ -2399,7 +2401,7 @@ DISPLAY_LINE
 {
 	CHANNEL = "abs_diff[5]";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
+	RADIX = Unsigned;
 	TREE_INDEX = 75;
 	TREE_LEVEL = 1;
 	PARENT = 72;
@@ -2409,7 +2411,7 @@ DISPLAY_LINE
 {
 	CHANNEL = "abs_diff[4]";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
+	RADIX = Unsigned;
 	TREE_INDEX = 76;
 	TREE_LEVEL = 1;
 	PARENT = 72;
@@ -2419,7 +2421,7 @@ DISPLAY_LINE
 {
 	CHANNEL = "abs_diff[3]";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
+	RADIX = Unsigned;
 	TREE_INDEX = 77;
 	TREE_LEVEL = 1;
 	PARENT = 72;
@@ -2429,7 +2431,7 @@ DISPLAY_LINE
 {
 	CHANNEL = "abs_diff[2]";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
+	RADIX = Unsigned;
 	TREE_INDEX = 78;
 	TREE_LEVEL = 1;
 	PARENT = 72;
@@ -2439,7 +2441,7 @@ DISPLAY_LINE
 {
 	CHANNEL = "abs_diff[1]";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
+	RADIX = Unsigned;
 	TREE_INDEX = 79;
 	TREE_LEVEL = 1;
 	PARENT = 72;
@@ -2449,7 +2451,7 @@ DISPLAY_LINE
 {
 	CHANNEL = "abs_diff[0]";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
+	RADIX = Unsigned;
 	TREE_INDEX = 80;
 	TREE_LEVEL = 1;
 	PARENT = 72;
