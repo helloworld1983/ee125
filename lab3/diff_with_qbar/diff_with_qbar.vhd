@@ -19,29 +19,29 @@ begin
 		end process;
 end architecture arch1;
 ---------------------------------------
-architecture arch2 of dff_with_qbar is
-begin
-	process (clk)
-		variable temp: bit;
-	begin
-		if clk'event and clk='1' then
-			temp := d;
-			q <= temp;
-			qbar <= not q;
-		end if;
-	end process;
-end architecture arch2;
+--architecture arch2 of dff_with_qbar is
+--begin
+--	process (clk)
+--		variable temp: bit;
+--	begin
+--		if clk'event and clk='1' then
+--			temp := d;
+--			q <= temp;
+--			qbar <= not q;
+--		end if;
+--	end process;
+--end architecture arch2;
 ----------------------------------------
-architecture arch3 of dff_with_qbar is
-begin
-	process (clk)
-		variable temp: bit;
-	begin
-		if clk'event and clk='1' then
-			temp := d;
-			q <= temp;
-		end if;
-		qbar <= not q;
-	end process;
-end architecture arch3;
+--architecture arch3 of dff_with_qbar is
+--begin
+--	process (clk)
+--		variable temp: bit;
+--	begin
+--		if clk'event and clk='1' then
+--			temp := d;
+--			q <= temp;
+--		end if;
+--		qbar <= not q;
+--	end process;
+--end architecture arch3;
 --------------------------
