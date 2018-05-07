@@ -15,8 +15,6 @@ ENTITY counter_leading_ones IS
 		x: IN STD_LOGIC_VECTOR(BITS-1 DOWNTO 0);
 		--num of bits, take the log base 2, then convert to an int. we redefine this because vhdl sucks
 		y: OUT STD_LOGIC_VECTOR((integer(log2(real(BITS)))) DOWNTO 0)
-		--used to output to the ssd without another entity. 
---		ssd: OUT BIT_VECTOR(6 DOWNTO 0)
 		);
 END ENTITY;
 
@@ -51,19 +49,6 @@ BEGIN
 								output(i+1);
 							
 	END GENERATE;
-	--the output signal of y as an unsigned in stl format. unused right now as we output to the ssd directly
+	--the output signal of y as an unsigned in stl format.
 	y <= std_logic_vector(output(0));
-	-- the ssd table from example 6.6 converted to a when table
-	-- When a bit/pin is set low/0 it turns that LED on, if its set high/1 its turned off on the ssd
---	ssd <=	"0000001" WHEN output(0) = to_unsigned(0, output(0)'LENGTH) ELSE
---				"1001111" WHEN output(0) = to_unsigned(1, output(0)'LENGTH) ELSE
---				"0010010" WHEN output(0) = to_unsigned(2, output(0)'LENGTH) ELSE
---				"0000110" WHEN output(0) = to_unsigned(3, output(0)'LENGTH) ELSE
---				"1001100" WHEN output(0) = to_unsigned(4, output(0)'LENGTH) ELSE
---				"0100100" WHEN output(0) = to_unsigned(5, output(0)'LENGTH) ELSE
---				"0100000" WHEN output(0) = to_unsigned(6, output(0)'LENGTH) ELSE
---				"0001111" WHEN output(0) = to_unsigned(7, output(0)'LENGTH) ELSE
---				"0000000" WHEN output(0) = to_unsigned(8, output(0)'LENGTH) ELSE
---				"0000100" WHEN output(0) = to_unsigned(9, output(0)'LENGTH) ELSE
---				"0110000";
 END ARCHITECTURE;

@@ -1,16 +1,16 @@
 /*<simulation_settings>
-<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off counter_leading_ones -c counter_leading_ones --vector_source="C:/Users/tyler/Documents/ee125-real/lab2/counter_leading_ones/counter_leading_ones.vwf" --testbench_file="C:/Users/tyler/Documents/ee125-real/lab2/counter_leading_ones/simulation/qsim/counter_leading_ones.vwf.vht"</ftestbench_cmd>
-<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off counter_leading_ones -c counter_leading_ones --vector_source="C:/Users/tyler/Documents/ee125-real/lab2/counter_leading_ones/counter_leading_ones.vwf" --testbench_file="C:/Users/tyler/Documents/ee125-real/lab2/counter_leading_ones/simulation/qsim/counter_leading_ones.vwf.vht"</ttestbench_cmd>
-<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tyler/Documents/ee125-real/lab2/counter_leading_ones/simulation/qsim/" counter_leading_ones -c counter_leading_ones</fnetlist_cmd>
-<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tyler/Documents/ee125-real/lab2/counter_leading_ones/simulation/qsim/" counter_leading_ones -c counter_leading_ones</tnetlist_cmd>
+<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off counter_leading_ones -c counter_leading_ones --vector_source="C:/Users/tyler/Documents/ee125/lab3/counter_leading_ones/counter_leading_ones.vwf" --testbench_file="C:/Users/tyler/Documents/ee125/lab3/counter_leading_ones/simulation/qsim/counter_leading_ones.vwf.vht"</ftestbench_cmd>
+<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off counter_leading_ones -c counter_leading_ones --vector_source="C:/Users/tyler/Documents/ee125/lab3/counter_leading_ones/counter_leading_ones.vwf" --testbench_file="C:/Users/tyler/Documents/ee125/lab3/counter_leading_ones/simulation/qsim/counter_leading_ones.vwf.vht"</ttestbench_cmd>
+<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tyler/Documents/ee125/lab3/counter_leading_ones/simulation/qsim/" counter_leading_ones -c counter_leading_ones</fnetlist_cmd>
+<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tyler/Documents/ee125/lab3/counter_leading_ones/simulation/qsim/" counter_leading_ones -c counter_leading_ones</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
 vcom -work work counter_leading_ones.vho
 vcom -work work counter_leading_ones.vwf.vht
-vsim -novopt -c -t 1ps -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.counter_leading_ones_vhd_vec_tst
+vsim -novopt -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.toplevel_vhd_vec_tst
 vcd file -direction counter_leading_ones.msim.vcd
-vcd add -internal counter_leading_ones_vhd_vec_tst/*
-vcd add -internal counter_leading_ones_vhd_vec_tst/i1/*
+vcd add -internal toplevel_vhd_vec_tst/*
+vcd add -internal toplevel_vhd_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {
@@ -20,17 +20,15 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
-
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
 vcom -work work counter_leading_ones.vho
 vcom -work work counter_leading_ones.vwf.vht
-vsim -novopt -c -t 1ps -sdfmax counter_leading_ones_vhd_vec_tst/i1=counter_leading_ones_vhd.sdo -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.counter_leading_ones_vhd_vec_tst
+vsim -novopt -c -t 1ps -sdfmax toplevel_vhd_vec_tst/i1=counter_leading_ones_vhd.sdo -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.toplevel_vhd_vec_tst
 vcd file -direction counter_leading_ones.msim.vcd
-vcd add -internal counter_leading_ones_vhd_vec_tst/*
-vcd add -internal counter_leading_ones_vhd_vec_tst/i1/*
+vcd add -internal toplevel_vhd_vec_tst/*
+vcd add -internal toplevel_vhd_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {
@@ -40,8 +38,6 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
-
 </modelsim_script_timing>
 <hdl_lang>vhdl</hdl_lang>
 </simulation_settings>*/
@@ -79,7 +75,7 @@ HEADER
 	GRID_DUTY_CYCLE = 50;
 }
 
-SIGNAL("x")
+SIGNAL("counter_in_top")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
@@ -96,7 +92,7 @@ SIGNAL("x[7]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "x";
+	PARENT = "counter_in_top";
 }
 
 SIGNAL("x[6]")
@@ -106,7 +102,7 @@ SIGNAL("x[6]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "x";
+	PARENT = "counter_in_top";
 }
 
 SIGNAL("x[5]")
@@ -116,7 +112,7 @@ SIGNAL("x[5]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "x";
+	PARENT = "counter_in_top";
 }
 
 SIGNAL("x[4]")
@@ -126,7 +122,7 @@ SIGNAL("x[4]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "x";
+	PARENT = "counter_in_top";
 }
 
 SIGNAL("x[3]")
@@ -136,7 +132,7 @@ SIGNAL("x[3]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "x";
+	PARENT = "counter_in_top";
 }
 
 SIGNAL("x[2]")
@@ -146,7 +142,7 @@ SIGNAL("x[2]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "x";
+	PARENT = "counter_in_top";
 }
 
 SIGNAL("x[1]")
@@ -156,7 +152,7 @@ SIGNAL("x[1]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "x";
+	PARENT = "counter_in_top";
 }
 
 SIGNAL("x[0]")
@@ -166,57 +162,97 @@ SIGNAL("x[0]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "x";
+	PARENT = "counter_in_top";
 }
 
-SIGNAL("y")
+SIGNAL("clk")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("ssd_out_top")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
-	WIDTH = 4;
+	WIDTH = 7;
 	LSB_INDEX = 0;
 	DIRECTION = OUTPUT;
 	PARENT = "";
 }
 
-SIGNAL("y[3]")
+SIGNAL("ssd_out_top[6]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "y";
+	PARENT = "ssd_out_top";
 }
 
-SIGNAL("y[2]")
+SIGNAL("ssd_out_top[5]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "y";
+	PARENT = "ssd_out_top";
 }
 
-SIGNAL("y[1]")
+SIGNAL("ssd_out_top[4]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "y";
+	PARENT = "ssd_out_top";
 }
 
-SIGNAL("y[0]")
+SIGNAL("ssd_out_top[3]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "y";
+	PARENT = "ssd_out_top";
+}
+
+SIGNAL("ssd_out_top[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "ssd_out_top";
+}
+
+SIGNAL("ssd_out_top[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "ssd_out_top";
+}
+
+SIGNAL("ssd_out_top[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "ssd_out_top";
 }
 
 TRANSITION_LIST("x[7]")
@@ -323,7 +359,16 @@ TRANSITION_LIST("x[0]")
 	}
 }
 
-TRANSITION_LIST("y[3]")
+TRANSITION_LIST("clk")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("ssd_out_top[6]")
 {
 	NODE
 	{
@@ -332,7 +377,7 @@ TRANSITION_LIST("y[3]")
 	}
 }
 
-TRANSITION_LIST("y[2]")
+TRANSITION_LIST("ssd_out_top[5]")
 {
 	NODE
 	{
@@ -341,7 +386,7 @@ TRANSITION_LIST("y[2]")
 	}
 }
 
-TRANSITION_LIST("y[1]")
+TRANSITION_LIST("ssd_out_top[4]")
 {
 	NODE
 	{
@@ -350,7 +395,34 @@ TRANSITION_LIST("y[1]")
 	}
 }
 
-TRANSITION_LIST("y[0]")
+TRANSITION_LIST("ssd_out_top[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("ssd_out_top[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("ssd_out_top[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("ssd_out_top[0]")
 {
 	NODE
 	{
@@ -361,7 +433,7 @@ TRANSITION_LIST("y[0]")
 
 DISPLAY_LINE
 {
-	CHANNEL = "x";
+	CHANNEL = "counter_in_top";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 0;
@@ -451,52 +523,91 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "y";
+	CHANNEL = "clk";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Unsigned;
+	RADIX = Binary;
 	TREE_INDEX = 9;
 	TREE_LEVEL = 0;
-	CHILDREN = 10, 11, 12, 13;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "y[3]";
+	CHANNEL = "ssd_out_top";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Unsigned;
+	RADIX = Binary;
 	TREE_INDEX = 10;
-	TREE_LEVEL = 1;
-	PARENT = 9;
+	TREE_LEVEL = 0;
+	CHILDREN = 11, 12, 13, 14, 15, 16, 17;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "y[2]";
+	CHANNEL = "ssd_out_top[6]";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Unsigned;
+	RADIX = Binary;
 	TREE_INDEX = 11;
 	TREE_LEVEL = 1;
-	PARENT = 9;
+	PARENT = 10;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "y[1]";
+	CHANNEL = "ssd_out_top[5]";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Unsigned;
+	RADIX = Binary;
 	TREE_INDEX = 12;
 	TREE_LEVEL = 1;
-	PARENT = 9;
+	PARENT = 10;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "y[0]";
+	CHANNEL = "ssd_out_top[4]";
 	EXPAND_STATUS = COLLAPSED;
-	RADIX = Unsigned;
+	RADIX = Binary;
 	TREE_INDEX = 13;
 	TREE_LEVEL = 1;
-	PARENT = 9;
+	PARENT = 10;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "ssd_out_top[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 14;
+	TREE_LEVEL = 1;
+	PARENT = 10;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "ssd_out_top[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 15;
+	TREE_LEVEL = 1;
+	PARENT = 10;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "ssd_out_top[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 16;
+	TREE_LEVEL = 1;
+	PARENT = 10;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "ssd_out_top[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 17;
+	TREE_LEVEL = 1;
+	PARENT = 10;
 }
 
 TIME_BAR

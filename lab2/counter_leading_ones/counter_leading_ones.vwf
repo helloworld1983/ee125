@@ -1,8 +1,8 @@
 /*<simulation_settings>
-<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off counter_leading_ones -c counter_leading_ones --vector_source="C:/Users/tyler/Documents/ee125-real/lab2/counter_leading_ones/counter_leading_ones.vwf" --testbench_file="C:/Users/tyler/Documents/ee125-real/lab2/counter_leading_ones/simulation/qsim/counter_leading_ones.vwf.vht"</ftestbench_cmd>
-<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off counter_leading_ones -c counter_leading_ones --vector_source="C:/Users/tyler/Documents/ee125-real/lab2/counter_leading_ones/counter_leading_ones.vwf" --testbench_file="C:/Users/tyler/Documents/ee125-real/lab2/counter_leading_ones/simulation/qsim/counter_leading_ones.vwf.vht"</ttestbench_cmd>
-<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tyler/Documents/ee125-real/lab2/counter_leading_ones/simulation/qsim/" counter_leading_ones -c counter_leading_ones</fnetlist_cmd>
-<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tyler/Documents/ee125-real/lab2/counter_leading_ones/simulation/qsim/" counter_leading_ones -c counter_leading_ones</tnetlist_cmd>
+<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off counter_leading_ones -c counter_leading_ones --vector_source="C:/Users/tyler/Documents/ee125/lab2/counter_leading_ones/counter_leading_ones.vwf" --testbench_file="C:/Users/tyler/Documents/ee125/lab2/counter_leading_ones/simulation/qsim/counter_leading_ones.vwf.vht"</ftestbench_cmd>
+<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off counter_leading_ones -c counter_leading_ones --vector_source="C:/Users/tyler/Documents/ee125/lab2/counter_leading_ones/counter_leading_ones.vwf" --testbench_file="C:/Users/tyler/Documents/ee125/lab2/counter_leading_ones/simulation/qsim/counter_leading_ones.vwf.vht"</ttestbench_cmd>
+<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tyler/Documents/ee125/lab2/counter_leading_ones/simulation/qsim/" counter_leading_ones -c counter_leading_ones</fnetlist_cmd>
+<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/tyler/Documents/ee125/lab2/counter_leading_ones/simulation/qsim/" counter_leading_ones -c counter_leading_ones</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
 vcom -work work counter_leading_ones.vho
@@ -20,7 +20,6 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
 
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
@@ -40,7 +39,6 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
 
 </modelsim_script_timing>
 <hdl_lang>vhdl</hdl_lang>
@@ -219,6 +217,86 @@ SIGNAL("y[0]")
 	PARENT = "y";
 }
 
+SIGNAL("ssd")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 7;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("ssd[6]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "ssd";
+}
+
+SIGNAL("ssd[5]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "ssd";
+}
+
+SIGNAL("ssd[4]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "ssd";
+}
+
+SIGNAL("ssd[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "ssd";
+}
+
+SIGNAL("ssd[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "ssd";
+}
+
+SIGNAL("ssd[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "ssd";
+}
+
+SIGNAL("ssd[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "ssd";
+}
+
 TRANSITION_LIST("x[7]")
 {
 	NODE
@@ -351,6 +429,69 @@ TRANSITION_LIST("y[1]")
 }
 
 TRANSITION_LIST("y[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("ssd[6]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("ssd[5]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("ssd[4]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("ssd[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("ssd[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("ssd[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("ssd[0]")
 {
 	NODE
 	{
@@ -497,6 +638,86 @@ DISPLAY_LINE
 	TREE_INDEX = 13;
 	TREE_LEVEL = 1;
 	PARENT = 9;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "ssd";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 14;
+	TREE_LEVEL = 0;
+	CHILDREN = 15, 16, 17, 18, 19, 20, 21;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "ssd[6]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 15;
+	TREE_LEVEL = 1;
+	PARENT = 14;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "ssd[5]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 16;
+	TREE_LEVEL = 1;
+	PARENT = 14;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "ssd[4]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 17;
+	TREE_LEVEL = 1;
+	PARENT = 14;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "ssd[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 18;
+	TREE_LEVEL = 1;
+	PARENT = 14;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "ssd[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 19;
+	TREE_LEVEL = 1;
+	PARENT = 14;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "ssd[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 20;
+	TREE_LEVEL = 1;
+	PARENT = 14;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "ssd[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 21;
+	TREE_LEVEL = 1;
+	PARENT = 14;
 }
 
 TIME_BAR
