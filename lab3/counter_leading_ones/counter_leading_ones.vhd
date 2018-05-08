@@ -57,8 +57,6 @@ ARCHITECTURE sequential OF counter_leading_ones IS
 BEGIN
 	counter: PROCESS(x)
 		variable count: UNSIGNED(y'RANGE);-- := to_unsigned(0, y'LENGTH);
---		variable zero_found: BOOLEAN := FALSE;
---		variable output: UNSIGNED(y'RANGE) := to_unsigned(0, y'LENGTH);
 	BEGIN
 		count := to_unsigned(0, y'LENGTH);
 		FOR i IN x'RANGE LOOP
