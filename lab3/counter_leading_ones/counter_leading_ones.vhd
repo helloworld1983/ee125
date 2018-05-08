@@ -11,7 +11,6 @@ ENTITY counter_leading_ones IS
 		BITS: INTEGER := 8
 		);
 	PORT (
-		clk: IN std_logic;
 		-- input in stl format
 		x: IN STD_LOGIC_VECTOR(BITS-1 DOWNTO 0);
 		--num of bits, take the log base 2, then convert to an int. we redefine this because vhdl sucks
@@ -54,28 +53,20 @@ END ENTITY;
 --	y <= std_logic_vector(output(0));
 --END ARCHITECTURE;
 
-ARCHITECTURE sequential OF counter_leading_ones IS
-	--SIGNAL output: UNSIGNED(y'RANGE) := to_unsigned(0, y'LENGTH);
+ARCHITECTURE sequential OF counter_leading_ones IS 
 BEGIN
-	PROCESS(clk)
-		variable zero_found: BOOLEAN := FALSE;
-		variable output: UNSIGNED(y'RANGE) := to_unsigned(0, y'LENGTH);
+	counter: PROCESS(x)
+		variable count: UNSIGNED(y'RANGE);-- := to_unsigned(0, y'LENGTH);
+--		variable zero_found: BOOLEAN := FALSE;
+--		variable output: UNSIGNED(y'RANGE) := to_unsigned(0, y'LENGTH);
 	BEGIN
-		IF rising_edge(clk) THEN
-			zero_found := FALSE;
-			output := to_unsigned(0, y'LENGTH);
-			FOR i IN x'RANGE LOOP
-				IF zero_found = FALSE THEN
-					IF x(i) = '0' THEN
-						zero_found := TRUE;
-					ELSIF x(i) = '1' THEN
-						output := output + 1;
-						zero_found := FALSE;
-					END IF;
-				END IF;
-			END LOOP;	
-			y <= STD_LOGIC_VECTOR(output); 
-		END IF;
-	
-	END PROCESS;
+		count := to_unsigned(0, y'LENGTH);
+		FOR i IN x'RANGE LOOP
+         CASE x(i) IS
+            WHEN '1' => count := count + 1;
+            WHEN OTHERS => EXIT;
+			END CASE;
+		END LOOP;
+		y <= std_logic_vector(count);
+	END PROCESS counter;
 END ARCHITECTURE;
