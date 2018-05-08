@@ -7,10 +7,10 @@
 vlib work
 vcom -work work counter_leading_ones.vho
 vcom -work work counter_leading_ones.vwf.vht
-vsim -novopt -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.toplevel_vhd_vec_tst
+vsim -novopt -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.counter_leading_ones_vhd_vec_tst
 vcd file -direction counter_leading_ones.msim.vcd
-vcd add -internal toplevel_vhd_vec_tst/*
-vcd add -internal toplevel_vhd_vec_tst/i1/*
+vcd add -internal counter_leading_ones_vhd_vec_tst/*
+vcd add -internal counter_leading_ones_vhd_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {
@@ -25,10 +25,10 @@ quit -f
 vlib work
 vcom -work work counter_leading_ones.vho
 vcom -work work counter_leading_ones.vwf.vht
-vsim -novopt -c -t 1ps -sdfmax toplevel_vhd_vec_tst/i1=counter_leading_ones_vhd.sdo -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.toplevel_vhd_vec_tst
+vsim -novopt -c -t 1ps -sdfmax counter_leading_ones_vhd_vec_tst/i1=counter_leading_ones_vhd.sdo -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.counter_leading_ones_vhd_vec_tst
 vcd file -direction counter_leading_ones.msim.vcd
-vcd add -internal toplevel_vhd_vec_tst/*
-vcd add -internal toplevel_vhd_vec_tst/i1/*
+vcd add -internal counter_leading_ones_vhd_vec_tst/*
+vcd add -internal counter_leading_ones_vhd_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {
@@ -75,7 +75,7 @@ HEADER
 	GRID_DUTY_CYCLE = 50;
 }
 
-SIGNAL("counter_in_top")
+SIGNAL("x")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
@@ -92,7 +92,7 @@ SIGNAL("x[7]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "counter_in_top";
+	PARENT = "x";
 }
 
 SIGNAL("x[6]")
@@ -102,7 +102,7 @@ SIGNAL("x[6]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "counter_in_top";
+	PARENT = "x";
 }
 
 SIGNAL("x[5]")
@@ -112,7 +112,7 @@ SIGNAL("x[5]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "counter_in_top";
+	PARENT = "x";
 }
 
 SIGNAL("x[4]")
@@ -122,7 +122,7 @@ SIGNAL("x[4]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "counter_in_top";
+	PARENT = "x";
 }
 
 SIGNAL("x[3]")
@@ -132,7 +132,7 @@ SIGNAL("x[3]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "counter_in_top";
+	PARENT = "x";
 }
 
 SIGNAL("x[2]")
@@ -142,7 +142,7 @@ SIGNAL("x[2]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "counter_in_top";
+	PARENT = "x";
 }
 
 SIGNAL("x[1]")
@@ -152,7 +152,7 @@ SIGNAL("x[1]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "counter_in_top";
+	PARENT = "x";
 }
 
 SIGNAL("x[0]")
@@ -162,7 +162,57 @@ SIGNAL("x[0]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "counter_in_top";
+	PARENT = "x";
+}
+
+SIGNAL("y")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 4;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("y[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "y";
+}
+
+SIGNAL("y[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "y";
+}
+
+SIGNAL("y[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "y";
+}
+
+SIGNAL("y[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "y";
 }
 
 SIGNAL("clk")
@@ -173,86 +223,6 @@ SIGNAL("clk")
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
 	PARENT = "";
-}
-
-SIGNAL("ssd_out_top")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = BUS;
-	WIDTH = 7;
-	LSB_INDEX = 0;
-	DIRECTION = OUTPUT;
-	PARENT = "";
-}
-
-SIGNAL("ssd_out_top[6]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "ssd_out_top";
-}
-
-SIGNAL("ssd_out_top[5]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "ssd_out_top";
-}
-
-SIGNAL("ssd_out_top[4]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "ssd_out_top";
-}
-
-SIGNAL("ssd_out_top[3]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "ssd_out_top";
-}
-
-SIGNAL("ssd_out_top[2]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "ssd_out_top";
-}
-
-SIGNAL("ssd_out_top[1]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "ssd_out_top";
-}
-
-SIGNAL("ssd_out_top[0]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "ssd_out_top";
 }
 
 TRANSITION_LIST("x[7]")
@@ -359,81 +329,62 @@ TRANSITION_LIST("x[0]")
 	}
 }
 
+TRANSITION_LIST("y[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("y[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("y[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
+TRANSITION_LIST("y[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 540.0;
+	}
+}
+
 TRANSITION_LIST("clk")
 {
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 540.0;
-	}
-}
-
-TRANSITION_LIST("ssd_out_top[6]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 540.0;
-	}
-}
-
-TRANSITION_LIST("ssd_out_top[5]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 540.0;
-	}
-}
-
-TRANSITION_LIST("ssd_out_top[4]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 540.0;
-	}
-}
-
-TRANSITION_LIST("ssd_out_top[3]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 540.0;
-	}
-}
-
-TRANSITION_LIST("ssd_out_top[2]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 540.0;
-	}
-}
-
-TRANSITION_LIST("ssd_out_top[1]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 540.0;
-	}
-}
-
-TRANSITION_LIST("ssd_out_top[0]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 540.0;
+		LEVEL 0 FOR 60.0;
+		LEVEL 1 FOR 60.0;
+		LEVEL 0 FOR 60.0;
+		LEVEL 1 FOR 60.0;
+		LEVEL 0 FOR 60.0;
+		LEVEL 1 FOR 60.0;
+		LEVEL 0 FOR 60.0;
+		LEVEL 1 FOR 60.0;
+		LEVEL 0 FOR 60.0;
 	}
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "counter_in_top";
+	CHANNEL = "x";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 0;
@@ -523,91 +474,61 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
+	CHANNEL = "y";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 9;
+	TREE_LEVEL = 0;
+	CHILDREN = 10, 11, 12, 13;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "y[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 10;
+	TREE_LEVEL = 1;
+	PARENT = 9;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "y[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 11;
+	TREE_LEVEL = 1;
+	PARENT = 9;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "y[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 12;
+	TREE_LEVEL = 1;
+	PARENT = 9;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "y[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Unsigned;
+	TREE_INDEX = 13;
+	TREE_LEVEL = 1;
+	PARENT = 9;
+}
+
+DISPLAY_LINE
+{
 	CHANNEL = "clk";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
-	TREE_INDEX = 9;
-	TREE_LEVEL = 0;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "ssd_out_top";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 10;
-	TREE_LEVEL = 0;
-	CHILDREN = 11, 12, 13, 14, 15, 16, 17;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "ssd_out_top[6]";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 11;
-	TREE_LEVEL = 1;
-	PARENT = 10;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "ssd_out_top[5]";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 12;
-	TREE_LEVEL = 1;
-	PARENT = 10;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "ssd_out_top[4]";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 13;
-	TREE_LEVEL = 1;
-	PARENT = 10;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "ssd_out_top[3]";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
 	TREE_INDEX = 14;
-	TREE_LEVEL = 1;
-	PARENT = 10;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "ssd_out_top[2]";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 15;
-	TREE_LEVEL = 1;
-	PARENT = 10;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "ssd_out_top[1]";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 16;
-	TREE_LEVEL = 1;
-	PARENT = 10;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "ssd_out_top[0]";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 17;
-	TREE_LEVEL = 1;
-	PARENT = 10;
+	TREE_LEVEL = 0;
 }
 
 TIME_BAR

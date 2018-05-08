@@ -19,9 +19,9 @@ END ENTITY toplevel;
 ARCHITECTURE toplevel_arch OF toplevel IS
 	SIGNAL counter_output : STD_LOGIC_VECTOR((integer(log2(real(BITS)))) DOWNTO 0); 
 BEGIN
-	m_counter_1: entity work.counter_leading_ones
+	m_counter_1: entity work.counter_leading_ones(sequential)
 		GENERIC MAP (BITS => BITS)
-		PORT MAP(x => counter_in_top, y => counter_output);
+		PORT MAP(clk => clk, x => counter_in_top, y => counter_output);
 	m_ssd_1: entity work.ssd_interface
 		GENERIC MAP (BITS => BITS)
 		PORT MAP(ssd_input => counter_output, ssd_output => ssd_out_top);
