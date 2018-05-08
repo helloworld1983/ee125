@@ -61,18 +61,21 @@ BEGIN
 		variable zero_found: BOOLEAN := FALSE;
 		variable output: UNSIGNED(y'RANGE) := to_unsigned(0, y'LENGTH);
 	BEGIN
-		if rising_edge(clk) then
+		IF rising_edge(clk) THEN
 			zero_found := FALSE;
 			output := to_unsigned(0, y'LENGTH);
-			for i in x'HIGH DOWNTO x'LOW LOOP
-				if (x(i) = '0') then
-					zero_found := TRUE;
-				elsif (x(i) = '1') AND (zero_found = FALSE) then
-					output := output + 1;
-					--output <= output + 1;  
-				end if;
-			end loop;	
+			FOR i IN x'RANGE LOOP
+				IF zero_found = FALSE THEN
+					IF x(i) = '0' THEN
+						zero_found := TRUE;
+					ELSIF x(i) = '1' THEN
+						output := output + 1;
+						zero_found := FALSE;
+					END IF;
+				END IF;
+			END LOOP;	
 			y <= STD_LOGIC_VECTOR(output); 
-		end if;
+		END IF;
+	
 	END PROCESS;
 END ARCHITECTURE;
