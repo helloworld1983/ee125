@@ -3,10 +3,8 @@ USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 USE ieee.math_real.ALL;
 
-ENTITY slow_counter IS
+ENTITY counter IS
 	GENERIC (
-		--50MHz
-		fclk : INTEGER := 50_000_000;
 		-- number of input bits
 		BITS : INTEGER := 8); 
 	PORT (
@@ -15,27 +13,20 @@ ENTITY slow_counter IS
 		y        : OUT STD_LOGIC_VECTOR((INTEGER(log2(real(BITS)))) DOWNTO 0));
 END ENTITY;
 
-ARCHITECTURE counter OF slow_counter IS
+ARCHITECTURE arch OF counter IS
 BEGIN
 	PROCESS (clk, rst)
-		VARIABLE counter1 : NATURAL RANGE 0 TO fclk := 0;
-		VARIABLE counter2 : UNSIGNED(y'RANGE)       := to_unsigned(0, y'LENGTH);
+		VARIABLE temp : UNSIGNED(y'RANGE)       := to_unsigned(0, y'LENGTH);
 	BEGIN
-		------counter:---------
-		IF (rst = '1') THEN
-			counter1 := 0;
-			counter2 := to_unsigned(0, y'LENGTH);
-		ELSIF rising_edge(clk) THEN
-			counter1 := counter1 + 1;
---			IF (counter1 = fclk) THEN
-			IF (counter1 = fclk) THEN
-				counter1 := 0;
-				counter2 := counter2 + 1;
-				IF counter2 = to_unsigned(2 ** 8, y'LENGTH) THEN
-					counter2 := to_unsigned(0, y'LENGTH);
-				END IF;
+		IF (rst = '0') THEN
+			temp := to_unsigned(0, y'LENGTH);
+		ELSIF falling_edge(clk) THEN
+			temp := temp + 1;
+			-- if counter2 reaches its max value, reset
+			IF temp = to_unsigned(2 ** BITS, y'LENGTH) THEN
+				temp := to_unsigned(0, y'LENGTH);
 			END IF;
 		END IF;
-		y <= STD_LOGIC_VECTOR(counter2);
+		y <= STD_LOGIC_VECTOR(temp);
 	END PROCESS;
 END ARCHITECTURE;

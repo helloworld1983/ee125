@@ -7,8 +7,10 @@ ENTITY switch_debouncer IS
 	GENERIC (
 		--50MHz
 		fclk : INTEGER := 50_000_000;
-		--counter size (20 bits gives 20.9ms with 50MHz clock)
-		BITS : INTEGER := 20
+		-- counter size (20 bits gives 20.9ms with 50MHz clock)
+		-- 2^20 * 1/(50MHz) ~= 20ms
+		-- time to debounce in ms
+		t_deb : INTEGER := 20
 	);
 	PORT (
 		clk, pb : IN STD_LOGIC;
@@ -21,7 +23,8 @@ ARCHITECTURE arch OF switch_debouncer IS
 	SIGNAL flipflops   : STD_LOGIC_VECTOR(1 DOWNTO 0);
 	--sync reset to zero
 	SIGNAL counter_set : STD_LOGIC;
-	SIGNAL counter_out : UNSIGNED(BITS - 1 DOWNTO 0) := to_unsigned(0, BITS);
+	-- we need to divide by 1000 after multiplying t_deb by fclk to adjust for t_deb being in ms
+	SIGNAL counter_out : UNSIGNED(INTEGER(CEIL(LOG2(REAL(t_deb * fclk / 1000)))) - 1 DOWNTO 0) := to_unsigned(0, INTEGER(CEIL(LOG2(REAL(t_deb * fclk / 1000)))));
 BEGIN
 	--determine when to start/reset counter
 	counter_set <= flipflops(0) XOR flipflops(1);
