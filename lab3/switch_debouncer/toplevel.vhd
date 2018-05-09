@@ -27,11 +27,11 @@ BEGIN
 		GENERIC MAP(fclk, t_deb)
 		PORT MAP(clk, pb, pb_deb);
 		
-	counter_1 : ENTITY work.counter
+	counter_1 : ENTITY work.counter(on_falling)
 		GENERIC MAP(BITS)
 		PORT MAP(clk => pb_deb, rst => rst, y => counter_output_1);
 		
-	counter_2 : ENTITY work.counter
+	counter_2 : ENTITY work.counter(on_falling)
 		GENERIC MAP(BITS)
 		PORT MAP(clk => pb, rst => rst, y => counter_output_2);
 		

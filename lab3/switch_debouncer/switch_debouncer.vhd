@@ -6,7 +6,7 @@ USE ieee.math_real.ALL;
 ENTITY switch_debouncer IS
 	GENERIC (
 		--50MHz
-		fclk : INTEGER := 50_000_000;
+		fclk  : INTEGER := 50_000_000;
 		-- counter size (20 bits gives 20.9ms with 50MHz clock)
 		-- 2^20 * 1/(50MHz) ~= 20ms
 		-- time to debounce in ms
@@ -20,9 +20,9 @@ END ENTITY switch_debouncer;
 
 ARCHITECTURE arch OF switch_debouncer IS
 	--input flip flops
-	SIGNAL flipflops   : STD_LOGIC_VECTOR(1 DOWNTO 0);
+	SIGNAL flipflops   : STD_LOGIC_VECTOR(1 DOWNTO 0)                                          := (OTHERS => '0');
 	--sync reset to zero
-	SIGNAL counter_set : STD_LOGIC;
+	SIGNAL counter_set : STD_LOGIC                                                             := '0';
 	-- we need to divide by 1000 after multiplying t_deb by fclk to adjust for t_deb being in ms
 	SIGNAL counter_out : UNSIGNED(INTEGER(CEIL(LOG2(REAL(t_deb * fclk / 1000)))) - 1 DOWNTO 0) := to_unsigned(0, INTEGER(CEIL(LOG2(REAL(t_deb * fclk / 1000)))));
 BEGIN
