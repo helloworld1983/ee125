@@ -18,15 +18,16 @@
 #
 # Quartus Prime
 # Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
-# Date created = 09:29:58  May 10, 2018
+# Date created = 16:35:25  May 14, 2018
 #
 # -------------------------------------------------------------------------- #
 
 QUARTUS_VERSION = "17.1"
-DATE = "09:29:58  May 10, 2018"
+DATE = "16:35:25  May 14, 2018"
 
 # Revisions
 
+PROJECT_REVISION = "kitchen_timer"
 PROJECT_REVISION = "natural_to_thermometer"
 PROJECT_REVISION = "ceil_log2"
 PROJECT_REVISION = "switch_debouncer"

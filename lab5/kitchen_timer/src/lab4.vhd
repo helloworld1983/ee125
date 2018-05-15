@@ -34,11 +34,15 @@ package body lab4 is
 		END IF;
 	end FUNCTION ceil_log2;
 	
-	FUNCTION natural_to_thermometer (x: NATURAL) return BIT_VECTOR IS
-		VARIABLE temp: BIT_VECTOR(x'HIGH - 1 DOWNTO 0) := (OTHERS => '0');
+	FUNCTION natural_to_thermometer (x: NATURAL)  return BIT_VECTOR IS
+		VARIABLE temp: BIT_VECTOR(x'HIGH - 1 DOWNTO 0) := (OTHERS => '1');
 	BEGIN
 		FOR i in 0 TO x'HIGH - 1 LOOP
-			temp(x'HIGH - i) := '1';
+			IF i = x THEN
+				temp(i) := '1';
+			ELSE 
+				temp(i) := '0';
+			END IF;
 		END LOOP;
 		RETURN temp;
 	END FUNCTION natural_to_thermometer;
