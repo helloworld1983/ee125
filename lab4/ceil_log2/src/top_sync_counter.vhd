@@ -4,7 +4,7 @@ USE ieee.numeric_std.ALL;
 USE ieee.math_real.ALL;
 USE work.lab4.all;
 
-ENTITY top_natural_to_thermometer IS
+ENTITY top_sync_counter IS
     GENERIC(
         -- our clock frequency
         fclk : INTEGER := 50_000_000;
@@ -17,9 +17,9 @@ ENTITY top_natural_to_thermometer IS
         --num of bits, take the log base 2, then convert to an int. we redefine this because vhdl sucks
         y : OUT STD_LOGIC_VECTOR((2 ** BITS) - 1 DOWNTO 0) := (OTHERS => '0')
     );
-END ENTITY top_natural_to_thermometer;
+END ENTITY top_sync_counter;
 
-ARCHITECTURE arch OF top_natural_to_thermometer IS
+ARCHITECTURE arch OF top_sync_counter IS
 BEGIN
     y <= to_stdlogicvector(natural_to_thermometer(UNSIGNED(x)));
 END ARCHITECTURE arch;

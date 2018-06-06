@@ -25,7 +25,7 @@
 # Notes:
 #
 # 1) The default values for assignments are stored in the file:
-#		natural_to_thermometer_assignment_defaults.qdf
+#		sync_counter_assignment_defaults.qdf
 #    If this file doesn't exist, see file:
 #		assignment_defaults.qdf
 #
@@ -38,9 +38,9 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE AUTO
-set_global_assignment -name TOP_LEVEL_ENTITY top_natural_to_thermometer
+set_global_assignment -name TOP_LEVEL_ENTITY top_sync_counter
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.1
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "09:29:58  MAY 10, 2018"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "05:45:23  MAY 16, 2018"
 set_global_assignment -name LAST_QUARTUS_VERSION "17.1.1 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
@@ -64,12 +64,13 @@ set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "500 ms" -section_id topl
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME toplevel_vhd_vec_tst -section_id toplevel_vhd_vec_tst
 set_global_assignment -name EDA_TEST_BENCH_FILE simulation/modelsim/debouncer.vwf.vht -section_id toplevel_vhd_vec_tst -hdl_version VHDL_2008
 set_global_assignment -name PROJECT_IP_REGENERATION_POLICY ALWAYS_REGENERATE_IP
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name VECTOR_WAVEFORM_FILE simulation/waveforms/ceil_log2.vwf
 set_global_assignment -name VHDL_FILE src/top_natural_to_thermometer.vhd -hdl_version VHDL_2008
 set_global_assignment -name VHDL_FILE src/lab4.vhd -hdl_version VHDL_2008
 set_global_assignment -name VECTOR_WAVEFORM_FILE simulation/waveforms/nat_to_therm.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE src/nat_to_therm.vwf
+set_global_assignment -name VHDL_FILE src/top_sync_counter.vhd
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
