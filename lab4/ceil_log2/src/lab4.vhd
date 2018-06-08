@@ -1,5 +1,5 @@
 LIBRARY ieee;
-USE ieee.std_logic_1164;
+USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 USE ieee.math_real.ALL;
 
