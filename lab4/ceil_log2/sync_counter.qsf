@@ -41,7 +41,7 @@ set_global_assignment -name DEVICE AUTO
 set_global_assignment -name TOP_LEVEL_ENTITY top_sync_counter
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.1.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "05:45:23  MAY 16, 2018"
-set_global_assignment -name LAST_QUARTUS_VERSION "18.0.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "17.1.1 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
@@ -51,29 +51,32 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH STI
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name VHDL_INPUT_VERSION VHDL_2008
 set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
-set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
+#set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
 set_global_assignment -name NUM_PARALLEL_PROCESSORS 4
 set_global_assignment -name FLOW_ENABLE_RTL_VIEWER ON
-set_global_assignment -name SMART_RECOMPILE ON
+set_global_assignment -name SMART_RECOMPILE OFF
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
 set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH toplevel_vhd_vec_tst -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_SETUP_SCRIPT simulation/modelsim/debouncer.vwf.do -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_SETUP_SCRIPT debouncer.vwf.do -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_NAME toplevel_vhd_vec_tst -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME toplevel_arch -section_id toplevel_vhd_vec_tst
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "500 ms" -section_id toplevel_vhd_vec_tst
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME toplevel_vhd_vec_tst -section_id toplevel_vhd_vec_tst
-set_global_assignment -name EDA_TEST_BENCH_FILE simulation/modelsim/debouncer.vwf.vht -section_id toplevel_vhd_vec_tst -hdl_version VHDL_2008
 set_global_assignment -name PROJECT_IP_REGENERATION_POLICY ALWAYS_REGENERATE_IP
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VHDL_FILE top_sync_counter.vhd -hdl_version VHDL_2008
+set_global_assignment -name COMMAND_MACRO_FILE test/debouncer.vwf.do
 set_global_assignment -name VHDL_TEST_BENCH_FILE test/debouncer.vwf.vht
-set_global_assignment -name VECTOR_WAVEFORM_FILE simulation/waveforms/ceil_log2.vwf
-set_global_assignment -name VHDL_FILE src/top_natural_to_thermometer.vhd -hdl_version VHDL_2008
-set_global_assignment -name VHDL_FILE src/lab4.vhd -hdl_version VHDL_2008
-set_global_assignment -name VECTOR_WAVEFORM_FILE simulation/waveforms/nat_to_therm.vwf
-set_global_assignment -name VECTOR_WAVEFORM_FILE src/nat_to_therm.vwf
-set_global_assignment -name VHDL_FILE src/top_sync_counter.vhd -hdl_version VHDL_2008
 set_global_assignment -name VHDL_FILE tff_sync.vhd -hdl_version VHDL_2008
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
+set_global_assignment -name VHDL_FILE sync_tb.vhd -hdl_version VHDL_2008
+set_global_assignment -name EDA_TEST_BENCH_FILE simulation/modelsim/debouncer.vwf.vht -section_id toplevel_vhd_vec_tst -hdl_version VHDL_2008
+set_global_assignment -name EDA_TEST_BENCH_NAME "sync test bench" -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME RTL -section_id "sync test bench"
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME sync_tb -section_id "sync test bench"
+set_global_assignment -name EDA_TEST_BENCH_FILE sync_tb.vhd -section_id "sync test bench" -hdl_version VHDL_2008
+set_global_assignment -name EDA_TEST_BENCH_FILE tff_sync.vhd -section_id "sync test bench" -hdl_version VHDL_2008
+set_global_assignment -name EDA_TEST_BENCH_FILE top_sync_counter.vhd -section_id "sync test bench" -hdl_version VHDL_2008
+set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

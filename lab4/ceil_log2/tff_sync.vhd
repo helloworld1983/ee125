@@ -4,25 +4,27 @@ use ieee.numeric_std.all;
 
 entity tff_sync is
     port(
-        clk, rst : in std_logic;
-        a, b : in std_logic;
-        q_bar, q : out std_logic
+        clk, rst : in  std_logic := '0';
+        a        : in  std_logic;
+        q        : out std_logic
     );
 end entity tff_sync;
 
 architecture RTL of tff_sync is
-    signal temp: std_logic;
+    --signal temp : std_logic := '0';
 begin
-    process (rst, clk)
+    process(clk, rst)
+        variable temp : std_logic := '0';
     begin
         if rising_edge(clk) then
             if rst = '1' then
-                temp <= '0';
+                temp := '0';
             elsif a = '1' then
-                temp <= b xor temp;
+                temp := not temp;
+            else
+                temp := temp;
             end if;
         end if;
+        q <= temp;
     end process;
-    q <= temp;
-    q_bar <= not temp;
 end architecture RTL;
