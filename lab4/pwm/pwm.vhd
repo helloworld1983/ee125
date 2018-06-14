@@ -22,7 +22,8 @@ architecture rtl of pulse_width_modulator is
     --    signal r_pwm_end        : unsigned(duty'range) := to_unsigned(0, duty'length);
     signal toggle           : std_logic            := '0';
 begin
-    toggle <= '0' when (counter < duty_max_count) else '1';
+    toggle    <= '0' when (counter < duty_max_count) else '1';
+    pwm_width <= unsigned(duty);
 
     --------------------------------------------------------------------
     p_state_out : process(clk, rst)

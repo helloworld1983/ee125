@@ -20,7 +20,7 @@ begin
     temp(0) <= cin;
     cout    <= temp(N);
     signed_adder : for i in 0 to N - 1 generate
-        full_adder_i : adder
+        full_adder_i : entity work.adder
             PORT MAP(
                 temp(i), a(i), b(i), sum(i), temp(i + 1)
             );
