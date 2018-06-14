@@ -14,7 +14,6 @@ ENTITY top_sync_counter IS
     PORT(
         -- input in stl format
         clk, rst : IN  std_logic                           := '0';
-        --        x : IN  STD_LOGIC_VECTOR(BITS - 1 DOWNTO 0)   := (OTHERS => '0');
         y        : OUT STD_LOGIC_VECTOR(BITS - 1 DOWNTO 0) := (OTHERS => '0')
     );
 END ENTITY top_sync_counter;

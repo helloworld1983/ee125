@@ -11,9 +11,8 @@ entity tff_sync is
 end entity tff_sync;
 
 architecture RTL of tff_sync is
-    --signal temp : std_logic := '0';
 begin
-    process(clk, rst)
+    process(clk)
         variable temp : std_logic := '0';
     begin
         if rising_edge(clk) then
