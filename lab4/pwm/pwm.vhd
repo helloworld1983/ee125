@@ -16,7 +16,7 @@ entity pulse_width_modulator is
 end pulse_width_modulator;
 
 architecture rtl of pulse_width_modulator is
-    constant duty_max_count : UNSIGNED(duty'range) := to_unsigned((((F_CLK / 10E6 * T_CLK_PWM / 10)) + 1), duty'length);
+    constant duty_max_count : UNSIGNED(duty'range) := to_unsigned((((F_CLK / 10E6 * T_CLK_PWM / 10E2)) + 1), duty'length);
     signal counter          : unsigned(duty'range) := to_unsigned(0, duty'length);
     signal pwm_width        : unsigned(duty'range) := to_unsigned(0, duty'length);
     --    signal r_pwm_end        : unsigned(duty'range) := to_unsigned(0, duty'length);
@@ -26,15 +26,15 @@ begin
 
     --------------------------------------------------------------------
     p_state_out : process(clk, rst)
-        variable r_pwm_end : unsigned(duty'range) := to_unsigned(0, duty'length);
+        variable pwm_end : unsigned(duty'range) := to_unsigned(0, duty'length);
     begin
         if (rst = '0') then
             pwm_width <= (others => '0');
             counter   <= (others => '0');
             pwm       <= '0';
         elsif rising_edge(clk) then
-            r_pwm_end := duty_max_count;
-            if (counter = 0) and (pwm_width /= r_pwm_end) then
+            pwm_end := duty_max_count;
+            if (counter = 0) and (pwm_width /= pwm_end) then
                 pwm <= '0';
             elsif (counter <= pwm_width) then
                 pwm <= '1';
@@ -46,7 +46,7 @@ begin
                 pwm_width <= unsigned(duty);
             end if;
 
-            if counter = r_pwm_end then
+            if counter = pwm_end then
                 counter <= to_unsigned(0, BITS_DEFAULT);
             else
                 counter <= counter + 1;
