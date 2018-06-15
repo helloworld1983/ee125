@@ -1,0 +1,43 @@
+|top_sync_counter
+clk => tff_sync:syncs:0:tff.clk
+clk => tff_sync:syncs:1:tff.clk
+clk => tff_sync:syncs:2:tff.clk
+clk => tff_sync:syncs:3:tff.clk
+rst => tff_sync:syncs:0:tff.rst
+rst => tff_sync:syncs:1:tff.rst
+rst => tff_sync:syncs:2:tff.rst
+rst => tff_sync:syncs:3:tff.rst
+y[0] <= tff_sync:syncs:0:tff.q
+y[1] <= tff_sync:syncs:1:tff.q
+y[2] <= tff_sync:syncs:2:tff.q
+y[3] <= tff_sync:syncs:3:tff.q
+
+
+|top_sync_counter|tff_sync:\syncs:0:tff
+clk => temp.CLK
+rst => temp.OUTPUTSELECT
+a => temp.OUTPUTSELECT
+q <= temp.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|top_sync_counter|tff_sync:\syncs:1:tff
+clk => temp.CLK
+rst => temp.OUTPUTSELECT
+a => temp.OUTPUTSELECT
+q <= temp.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|top_sync_counter|tff_sync:\syncs:2:tff
+clk => temp.CLK
+rst => temp.OUTPUTSELECT
+a => temp.OUTPUTSELECT
+q <= temp.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|top_sync_counter|tff_sync:\syncs:3:tff
+clk => temp.CLK
+rst => temp.OUTPUTSELECT
+a => temp.OUTPUTSELECT
+q <= temp.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -6,8 +6,6 @@ USE work.ALL;
 
 ENTITY top_sync_counter IS
     GENERIC(
-        -- our clock frequency
-        --        fclk : INTEGER := 50_000_000;
         -- number of input bits
         BITS : INTEGER := 4
     );

@@ -32,9 +32,6 @@ pulse_width_modulator.npp.qmsg
 pulse_width_modulator.pre_map.hdbx
 pulse_width_modulator.root_partition.cmp.atm
 pulse_width_modulator.root_partition.cmp.dfp
-pulse_width_modulator.root_partition.cmp.hbdb.atm
-pulse_width_modulator.root_partition.cmp.hbdb.hdbx
-pulse_width_modulator.root_partition.cmp.hbdb.sig
 pulse_width_modulator.root_partition.cmp.hdbx
 pulse_width_modulator.root_partition.cmp.logdb
 pulse_width_modulator.root_partition.cmp.rcf
