@@ -1,0 +1,26 @@
+|pulse_width_modulator
+clk => pwm~reg0.CLK
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clk => pwm_width[0].CLK
+clk => pwm_width[1].CLK
+clk => pwm_width[2].CLK
+clk => pwm_width[3].CLK
+rst => pwm~reg0.ACLR
+rst => counter[0].ACLR
+rst => counter[1].ACLR
+rst => counter[2].ACLR
+rst => counter[3].ACLR
+rst => pwm_width[0].ACLR
+rst => pwm_width[1].ACLR
+rst => pwm_width[2].ACLR
+rst => pwm_width[3].ACLR
+duty[0] => pwm_width[0].DATAIN
+duty[1] => pwm_width[1].DATAIN
+duty[2] => pwm_width[2].DATAIN
+duty[3] => pwm_width[3].DATAIN
+pwm <= pwm~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

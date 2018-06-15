@@ -1,6 +1,6 @@
 # -------------------------------------------------------------------------- #
 #
-# Copyright (C) 2017  Intel Corporation. All rights reserved.
+# Copyright (C) 2018  Intel Corporation. All rights reserved.
 # Your use of Intel Corporation's design tools, logic functions 
 # and other software and tools, and its AMPP partner logic 
 # functions, and any output files from any of the foregoing 
@@ -17,14 +17,14 @@
 # -------------------------------------------------------------------------- #
 #
 # Quartus Prime
-# Version 17.1.1 Internal Build 593 12/11/2017 SJ Lite Edition
-# Date created = 00:26:47  June 14, 2018
+# Version 18.0.0 Build 614 04/24/2018 SJ Standard Edition
+# Date created = 10:44:32  June 14, 2018
 #
 # -------------------------------------------------------------------------- #
 
-QUARTUS_VERSION = "17.1"
-DATE = "00:26:47  June 14, 2018"
+QUARTUS_VERSION = "18.0"
+DATE = "10:44:32  June 14, 2018"
 
 # Revisions
 
-PROJECT_REVISION = "pwm"
+PROJECT_REVISION = "pulse_width_modulator"
