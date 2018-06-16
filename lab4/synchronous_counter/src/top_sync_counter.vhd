@@ -4,21 +4,22 @@ USE ieee.numeric_std.ALL;
 USE ieee.math_real.ALL;
 USE work.ALL;
 
-ENTITY top_sync_counter IS
+ENTITY sync_counter IS
     GENERIC(
         -- number of input bits
         BITS : INTEGER := 4
     );
     PORT(
         -- input in stl format
-        clk, rst : IN  std_logic                           := '0';
-        y        : OUT STD_LOGIC_VECTOR(BITS - 1 DOWNTO 0) := (OTHERS => '0')
+        clk : IN  std_logic                           := '0';
+        rst : in  std_logic                           := '1';
+        y   : OUT STD_LOGIC_VECTOR(BITS - 1 DOWNTO 0) := (OTHERS => '0')
     );
-END ENTITY top_sync_counter;
+END ENTITY sync_counter;
 
-ARCHITECTURE arch OF top_sync_counter IS
-    signal q : std_logic_vector(BITS - 1 downto 0);
-    signal a : std_logic_vector(BITS - 1 downto 0);
+ARCHITECTURE arch OF sync_counter IS
+    signal q : std_logic_vector(BITS - 1 downto 0) := (OTHERS => '0');
+    signal a : std_logic_vector(BITS - 1 downto 0) := (others => '0');
 BEGIN
 
     input : for j in BITS - 1 downto 1 generate
@@ -31,6 +32,7 @@ BEGIN
         tff : entity work.tff_sync(RTL)
             port map(clk, rst, a(i), q(i));
     end generate syncs;
+
     y <= q;
 
 END ARCHITECTURE arch;

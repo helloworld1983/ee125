@@ -11,6 +11,7 @@ top_sync_counter.cmp.xml
 top_sync_counter.cmp_merge.kpt
 top_sync_counter.db_export.qmsg
 top_sync_counter.db_info
+top_sync_counter.drc.qmsg
 top_sync_counter.eda.qmsg
 top_sync_counter.export_db_files
 top_sync_counter.export_db_post_map_files
@@ -28,6 +29,8 @@ top_sync_counter.map_bb.atm
 top_sync_counter.map_bb.hdbx
 top_sync_counter.map_bb.sci
 top_sync_counter.map_bb.scidsc
+top_sync_counter.npp.qmsg
+top_sync_counter.pow.qmsg
 top_sync_counter.pre_map.hdbx
 top_sync_counter.root_partition.cmp.atm
 top_sync_counter.root_partition.cmp.dfp

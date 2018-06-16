@@ -12,7 +12,7 @@ end entity tff_sync;
 
 architecture RTL of tff_sync is
 begin
-    process(clk)
+    process(all)
         variable temp : std_logic := '0';
     begin
         if rising_edge(clk) then
